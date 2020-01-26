@@ -10,7 +10,7 @@ class LineChart extends Component {
 
   componentDidMount() {
     const {
-      data, label1, label2, title, color1, color2,
+      data, label1, label2, label3, title, color1, color2, color3,
     } = this.props;
     const labels = data.uPartialTimes
       .sort((a, b) => (a.label < b.label ? -1 : 1)).map((d) => d.label);
@@ -31,7 +31,15 @@ class LineChart extends Component {
           backgroundColor: color2,
           borderColor: color2,
           fill: false,
-        }],
+        },
+        {
+          label: label3,
+          data: data.rPartialTimes.map((d) => Number(d.value)),
+          backgroundColor: color3,
+          borderColor: color3,
+          fill: false,
+        },
+        ],
       },
       options: {
         responsive: true,
@@ -51,7 +59,7 @@ class LineChart extends Component {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Execution Time',
+              labelString: 'Execution Time (ms)',
             },
           }],
         },
@@ -73,12 +81,15 @@ LineChart.propTypes = {
   data: PropTypes.shape({
     uPartialTimes: PropTypes.arrayOf(Element),
     mPartialTimes: PropTypes.arrayOf(Element),
+    rPartialTimes: PropTypes.arrayOf(Element),
   }).isRequired,
   title: PropTypes.string.isRequired,
   color1: PropTypes.string.isRequired,
   color2: PropTypes.string.isRequired,
+  color3: PropTypes.string.isRequired,
   label1: PropTypes.string.isRequired,
   label2: PropTypes.string.isRequired,
+  label3: PropTypes.string.isRequired,
 };
 
 export default LineChart;

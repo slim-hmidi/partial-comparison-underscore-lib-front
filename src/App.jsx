@@ -19,8 +19,10 @@ function App(props) {
             title="Performance time"
             color1="red"
             color2="blue"
+            color3="orange"
             label1="underscore partial"
             label2="manual partial"
+            label3="ramda partial"
             data={data}
           />
         )}
@@ -46,6 +48,7 @@ App.propTypes = {
   data: PropTypes.shape({
     uPartialTimes: PropTypes.arrayOf(Element),
     mPartialTimes: PropTypes.arrayOf(Element),
+    rPartialTimes: PropTypes.arrayOf(Element),
   }).isRequired,
   fetchRequest: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
